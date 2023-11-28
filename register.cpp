@@ -1,28 +1,18 @@
 #include <iostream>
 #include <string.h>
 #include <fstream>
+#include <iomanip>
 
 void login();
 void registration();
 void forgot();
+int menu();
 
 using namespace std;
 
 int main()
 {
-    int c; // c for choice
-    cout << "\t\t\t__________________________________________________________________________\n\n\n";
-    cout << "\t\t\t                     Welcome to the Login page                               \n\n";
-    cout << "\t\t\t______________________        MENU        ________________________________\n\n";
-    cout << "                                                                                \n\n";
-    cout << "\t|  Press 1 to LOGIN                    |" << endl;
-    cout << "\t|  Press 2 to REGISTER                 |" << endl;
-    cout << "\t|  Press 3 if you forgot your PASSWORD |" << endl;
-    cout << "\t|  Press 4 to Exit                     |" << endl;
-    cout << "\n\t\t\tPlease Enter your choice :";
-    cin >> c;
-    cout << endl;
-    switch (c)
+    switch (menu())
     {
     case 1:
         login();
@@ -46,6 +36,34 @@ int main()
         main();
     }
 }
+
+
+int menu() {
+    int c, lineLength = 50; 
+
+    cout << setfill('_') << setw(lineLength+18) << "" << endl; // Upper bar
+
+    cout << setfill(' ') <<  setw(lineLength-3) <<  "Welcome to the Login Page" << endl; // Login Page
+
+    cout << setfill('_');   // Menu Part
+    cout << setw((lineLength - 10) / 2) << "" ; 
+    cout << "\t\tMenu\t\t";
+    cout << setw((lineLength - 10) / 2) << "" << endl;
+    cout << endl;
+
+    cout << "\t|  Press 1 to LOGIN                    |" << endl;
+    cout << "\t|  Press 2 to REGISTER                 |" << endl;
+    cout << "\t|  Press 3 if you forgot your PASSWORD |" << endl;
+    cout << "\t|  Press 4 to Exit                     |" << endl;
+
+    cout << "\n\tPlease Enter your choice :";
+    cin >> c;
+    
+    cout << endl;
+
+    return c;
+}
+
 
 void login()
 {
